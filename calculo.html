@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang='pt'>
+    <head>
+        <meta charset="UTF-8">
+        <title>Cálculo</title>
+    </head>
+    <body>
+        <script>  
+
+            var nome;
+            nome = prompt('Qual é o seu nome?')
+            document.write("Olá, " + nome + ", seja bem vinde :)")
+
+            function calculo(){
+                var a = document.getElementById('num1').value
+                var b = document.getElementById('num2').value
+                var operacao = document.getElementById('op').value
+
+                if(operacao != "Soma" && operacao != "Subtração"){
+                    alert("Certifique-se de digitar a operação corretamente.")
+                }
+
+                a = parseInt(a)
+                b = parseInt(b)
+
+                if (operacao == 'Soma'){
+                    var resp = a + b
+                    document.getElementById('resp').innerHTML = resp
+                } 
+                
+                else if (operacao == 'Subtração'){
+                    var resp = a - b
+                    document.getElementById('resp').innerHTML = resp
+                }
+            }
+            
+        </script>
+
+        <br><br>
+        <h3> Cálculos </h3> <br>
+        <label for="num1">Insira um número:</label>
+        <input type="number" id="num1" name="num1" placeholder="Primeiro Número">
+        <br><br>
+        <label for="op">Digite uma operação:</label>
+        <input type="text" id="op" name="op" placeholder="Digite 'Soma' ou 'Subtração'">
+        <br><br>
+        <label for="num2">Insira outro número:</label>
+        <input type="number" id="num2" name="num2" placeholder="Segundo Número">
+        <br><br>
+        <input id="calcular" type="submit" value="Calcular" onclick="calculo()" />
+        <br><br>
+        <b>Resultado:</b>
+        <br>
+O resultado é <span id ='resp'></span>
+
+    </body>
+</html>

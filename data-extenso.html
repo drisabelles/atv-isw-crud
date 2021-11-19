@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang='pt'>
+    <head>
+        <meta charset="UTF-8">
+        <title>Data por Extenso</title>
+    </head>
+    <body>
+        <script>  
+
+            var nome;
+            nome = prompt('Qual é o seu nome?')
+            document.write("Olá, " + nome + ", seja bem vinde :)")
+
+            function data(){
+            var data = document.getElementById('data').value
+            data = data.split('-')
+            dia = data[2]
+            mes = parseInt(data[1])
+            ano = data[0]
+            var meses = [
+                "Janeiro",
+                "Fevereiro",
+                "Março",
+                "Abril",
+                "Maio",
+                "Junho",
+                "Julho",
+                "Agosto",
+                "Setembro",
+                "Outubro",
+                "Novembro",
+                "Dezembro"];
+            var data_escrito = dia + " de " + meses[mes-1] + " de " + ano
+            document.getElementById('resp').innerHTML = data_escrito
+            }
+
+        </script>
+
+        <br><br>
+        <h3> Data por Extenso</h3> <br>
+        <label for="data">Digite uma data:</label>
+        <input type="date" id="data" name="data" placeholder="dd/mm/aa">
+        <br><br>
+        <input id="calcular" type="submit" value="Calcular" onclick="data()" />
+        <br><br>
+        <b>Resultado:</b>
+        <br>
+        O resultado é <span id ='resp'></span>
+
+    </body>
+</html>

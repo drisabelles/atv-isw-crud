@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang='pt'>
+    <head>
+        <meta charset="UTF-8">
+        <title>Média Escolar</title>
+    </head>
+    <body>
+
+        <script>  
+
+            var nome;
+            nome = prompt('Qual é o seu nome?')
+            document.write("Olá, " + nome + ", seja bem vinde :)")
+
+            function media(){
+                var prova = document.getElementById("prova").value
+                var trabalho = document.getElementById("trabalho").value
+                var pratica = document.getElementById("pratica").value
+                prova = parseInt(prova)
+                trabalho = parseInt(trabalho)
+                pratica = parseInt(pratica)
+                var media = ((2*pratica) + (5*prova)+(3*trabalho))/(3+5+2)
+                document.getElementById('media').innerHTML = media
+                
+                if (media > 9){
+                    document.getElementById('resultado').innerHTML = "A"
+                } 
+                
+                else if (media == 9) {
+                    document.getElementById('resultado').innerHTML = "B"
+                } 
+                
+                else if (media == 8) {
+                    document.getElementById('resultado').innerHTML = "C"
+                } 
+                
+                else if (media == 7) {
+                    document.getElementById('resultado').innerHTML = "D"
+                } 
+                
+                else if (media == 6) {
+                    document.getElementById('resultado').innerHTML = "E"
+                } 
+                
+                else {
+                    document.getElementById('resultado').innerHTML = "F"
+                }
+            }
+            
+            
+        </script>
+
+        <br><br>
+        <h3> Média Escolar </h3>
+        <label for="pratica">Atividade Prática em Laboratório:</label>
+        <input type="text" id="pratica" name="pratica" placeholder="Nota">
+        <br><br>
+        <label for="prova">Prova do Semestre:</label>
+        <input type="text" id="prova" name="prova" placeholder="Nota">
+        <br><br>
+        <label for="trabalho">Trabalho Teórico:</label>
+        <input type="text" id="trabalho" name="trabalho" placeholder="Nota">
+        <br><br>
+        <input id="calcular_media" type="button" value="Calcular Média" onclick="media()" />
+        <br><br>
+        <b>Resultado:</b>
+        <br>
+        A média do aluno é <span id ='media'></span> e sua classificação é <span id ='resultado'></span>
+
+    </body>
+</html>

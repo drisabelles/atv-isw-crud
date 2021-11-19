@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang='pt'>
+    <head>
+        <meta charset="UTF-8">
+        <title>Folha de Pagamento</title>
+    </head>
+    <body>
+        <script>  
+
+            var nome;
+            nome = prompt('Qual é o seu nome?')
+            document.write("Olá, " + nome + ", seja bem vinde :)")
+    
+            function hotel(){
+                var cod = document.getElementById("codigo").value
+                var salario = document.getElementById("salario").value
+                var horas = document.getElementById("horas").value
+                var turno = document.getElementById("turno").value
+                var categoria = document.getElementById("categoria").value
+
+                if(categoria != "G" && categoria != "F"){
+                        alert("Verifique a categoria! Insira 'G' ou 'F'. Verifique se está maiúscula.")
+                    }
+                  
+                if(turno != "N" && turno != "M" && turno != "V" ){
+                        alert("Verifique o turno! Insira 'M', 'N' ou 'V. Verifique se está maiúscula.")
+                    }
+
+                document.getElementById('cod').innerHTML = cod
+        
+                document.getElementById('horas_trabalhadas').innerHTML = horas
+
+                if (categoria == "G"){
+                   var valor_hora = (4*salario)/100
+                   var salario_inicial = valor_hora*horas
+                   document.getElementById('valor_hora').innerHTML = valor_hora
+                    document.getElementById('inicial').innerHTML = salario_inicial 
+                } 
+                
+                else {
+
+                    if (turno == "N"){
+                    var valor_hora = (2*salario)/100
+                    var salario_inicial = valor_hora*horas
+                    document.getElementById('valor_hora').innerHTML = valor_hora
+                        document.getElementById('inicial').innerHTML = salario_inicial
+                    } 
+                    
+                    else {
+                    var valor_hora = (1*salario)/100
+                    var salario_inicial = valor_hora*horas
+                    document.getElementById('valor_hora').innerHTML = valor_hora
+                        document.getElementById('inicial').innerHTML = salario_inicial
+                    }
+
+                }
+
+                if (salario_inicial <= 800){
+                    var aux = (25*salario_inicial)/100
+                    document.getElementById('auxilio').innerHTML = aux
+                } 
+                
+                else if (salario_inicial > 800 && salario_inicial <= 1200){
+                    var aux = (20*salario_inicial)/100
+                    document.getElementById('auxilio').innerHTML = aux
+                } 
+                
+                else {
+                    var aux = (15*salario_inicial)/100
+                    document.getElementById('auxilio').innerHTML = aux
+                }
+
+                var salario_final = salario_inicial + aux
+                document.getElementById('final').innerHTML = salario_final
+
+            }
+
+        </script>
+
+        <br><br>
+        <h3> Folha de Pagamento </h3> <br>
+
+        Descrição dos Turnos<br><br>
+        N - Noturno <br>
+        M - Matutino <br>
+        V - Vespetino <br><br>
+
+        Descrição da Categoria<br><br>
+        G - Gerente <br>
+        F - Funcionário <br><br>
+
+        <label for="codigo">Código:</label>
+        <input type="number" id="codigo" name="codigo" placeholder="Código">
+        <br><br>
+        <label for="salario">Salário mínimo estadual:</label>
+        <input type="number" id="salario" name="salario" placeholder="Salário Mínimo">
+        <br><br>
+        <label for="horas">Quantidade de horas trabalhadas:</label>
+        <input type="number" id="horas" name="horas" placeholder="Horas Trabalhadas"> horas
+        <br><br>
+        <label for="turno">Turno de trabalho:</label><br><br>
+        <input type="input" id="turno" name="turno" placeholder="Turno de Trabalho">
+        <br><br>
+        <label for="categoria">Categoria:</label><br><br>
+        <input type="input" id="categoria" name="categoria" placeholder="Categoria de Trabalho">
+        <br><br>
+        <input id="calcular" type="submit" value="Calcular Salário" onclick="hotel()" />
+        <br><br>
+        <b>Resultado:</b>
+        <br>
+        Código do funcionário: <span id ='cod'></span><br>
+        Horas trabalhadas: <span id ='horas_trabalhadas'></span><br>
+        Valor da hora trabalhada: <span id ='valor_hora'></span><br>
+        Salário inicial: <span id ='inicial'></span><br>
+        Auxílio alimentação: <span id ='auxilio'></span><br>
+        Salário final: <span id ='final'></span>
+
+    </body>
+</html>

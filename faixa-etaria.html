@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang='pt'>
+    <head>
+        <meta charset="UTF-8">
+        <title>Faixa Etária</title>
+    </head>
+    <body>
+        <script>  
+
+            var nome;
+            nome = prompt('Qual é o seu nome?')
+            document.write("Olá, " + nome + ", seja bem vinde :)")
+    
+            function faixa_etaria(){
+                var idade = document.getElementById("idade").value
+                
+                if (idade >=0 && idade < 15){
+                    document.getElementById('resultado').innerHTML = "Criança"
+                } 
+                
+                else if (idade >= 15 && idade < 30) {
+                    document.getElementById('resultado').innerHTML = "Jovem"
+                } 
+                
+                else if (idade >= 30 && idade < 60) {
+                    document.getElementById('resultado').innerHTML = "Adulto"
+                } 
+                
+                else {
+                    document.getElementById('resultado').innerHTML = "Idoso"
+                }
+            }
+
+        </script>
+
+        <br><br>
+        <h3> Faixa Etária </h3>
+        <label for="idade">Digite a sua idade:</label>
+        <input type="number" id="idade" name="idade" placeholder="Insira sua idade"> anos
+        <br><br>
+        <input id="faixa_etaria" type="button" value="Classificar" onclick="Faixa_etaria()" />
+        <br><br>
+        <b>Resultado:</b>
+        <br>
+        <span id ='resultado'></span>
+
+    </body>
+</html>

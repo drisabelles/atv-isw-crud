@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang='pt'>
+    <head>
+        <meta charset="UTF-8">
+        <title>Transportadora</title>
+    </head>
+    <body>
+        <script>  
+
+            var nome;
+            nome = prompt('Qual é o seu nome?')
+            document.write("Olá, " + nome + ", seja bem vinde :)")
+
+            function frete(){
+                var distancia = document.getElementById("distancia").value
+                distancia = parseFloat(distancia)
+                var pecas = document.getElementById("pecas").value
+                pecas =  parseFloat(pecas)
+                var regiao = document.getElementById("regiao").value
+                regiao =  parseFloat(regiao)
+                var taxa_rastreamento;
+                var frete_pecas;
+                var frete_km;
+                var rastreamento = confirm("Deseja rastreamento?")
+
+                if(rastreamento){
+                    rastreamento = 200
+                    taxa_rastreamento = rastreamento
+                    document.getElementById('taxa_rastreamento').innerHTML = taxa_rastreamento
+                } 
+                
+                else {
+                    rastreamento = 0
+                    taxa_rastreamento  = rastreamento
+                    document.getElementById('taxa_rastreamento').innerHTML = taxa_rastreamento
+                }
+                    
+                if(regiao == 0 || regiao > 3){
+                    alert("Região inserida inválida!")
+                }
+                    
+                if(pecas <= 1000){
+
+                    if (regiao == 1){
+                        pecas = pecas*1.00
+                        frete_pecas = pecas
+                    } 
+                    
+                    else if (regiao == 2){
+                        pecas = pecas*1.20
+                        frete_pecas = pecas
+                    } 
+                    
+                    else {
+                        pecas = pecas*1.30
+                        frete_pecas = pecas}
+                    } 
+                    
+                else {
+
+                    if (regiao == 1){
+                        pecas_taxa = pecas-1000
+                        taxa = (1.00*90)/100
+                        pecas_total = (pecas_taxa*taxa) + (1000*1.00) 
+                        frete_pecas = pecas_total
+                    } 
+                        
+                    else if (regiao == 2){
+                        pecas_taxa = pecas-1000
+                        taxa = (1.20*88)/100
+                        pecas_total = (pecas_taxa*taxa) + (1000*1.20) 
+                        frete_pecas = pecas_total
+                    } 
+                        
+                    else {
+                        pecas_taxa = pecas-1000
+                        taxa = (1.30*87)/100
+                        pecas_total = (pecas_taxa*taxa) + (1000*1.30) 
+                        frete_pecas = pecas_total
+                    }
+                }
+
+                if (regiao == 1){
+                    km = distancia*1.00
+                    frete_km = km
+                } 
+                    
+                else if (regiao == 2){
+                    km = distancia*1.20
+                    frete_km =  km
+                } 
+                    
+                else {
+                    km = distancia*1.30
+                    frete_km =  km
+                }
+
+                var frete_total = frete_km + frete_pecas + taxa_rastreamento 
+                document.getElementById('frete_total').innerHTML = frete_total
+                document.getElementById('frete_pecas').innerHTML = frete_pecas
+                document.getElementById('frete_km').innerHTML = frete_km
+                document.getElementById('taxa_rastreamento').innerHTML = taxa_rastreamento 
+
+            }
+            
+        </script>
+
+        <br><br>
+        <h3> Transportadora </h3> <br>
+        Regiões disponíveis para entrega:<br><br>
+        1 - Sul <br>
+        2 - Sudeste <br>
+        3 - Centro-Oeste <br><br>
+
+        <label for="pecas">Quantidade de peças:</label>
+        <input type="number" id="pecas" name="pecas" placeholder="Insira a quantidade de peças">
+        <br><br>
+        <label for="distancia">Distância:</label>
+        <input type="number"id="distancia" name="distancia" placeholder="Insira a distância em quilômetros"> Km
+        <br><br>
+        <label for="regiao">Região:</label>
+        <input type="number" id="regiao" name="regiao" placeholder="Insira o número da região da entrega">
+        <br><br>
+
+        <br><br>
+        <input id="calcular_frete" type="button" value="Calcular Frete" onclick="frete()" />
+        <br><br>
+        <b>Resultado:</b>
+        <br>
+        Taxa do rastreamento: <span id ='taxa_rastreamento'></span> <br>
+        Valor do frete pelas peças: <span id ='frete_pecas'></span><br>
+        Valor do frete por quilômetro: <span id ='frete_km'></span><br>
+        Total do frete: <span id ='frete_total'></span>
+
+    </body>
+</html>

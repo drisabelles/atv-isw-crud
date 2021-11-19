@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang='pt'>
+    <head>
+        <meta charset="UTF-8">
+        <title>Índice Massa Corporal</title>
+    </head>
+    <body>
+        <script>  
+
+            var nome;
+            nome = prompt('Qual é o seu nome?')
+            document.write("Olá, " + nome + ", seja bem vinde :)")
+
+            function IMC(){
+                var altura = document.getElementById("altura").value
+                var peso = document.getElementById("peso").value
+                altura = parseFloat(altura)
+                altura = altura/100
+                peso = parseFloat(peso)
+                var IMC = peso/(altura*altura)
+                document.getElementById('nome').innerHTML = nome
+    
+                if (IMC < 16 ) {
+                    document.getElementById('classificacao').innerHTML = "Baixo peso muito grave"
+                } 
+                
+                else if (IMC >= 16 && IMC <= 16.99) {
+                    document.getElementById('classificacao').innerHTML = "Baixo peso grave"
+                } 
+                
+                else if (IMC >= 17 && IMC <= 18.49) {
+                    document.getElementById('classificacao').innerHTML = "Baixo peso"
+                } 
+                
+                else if (IMC >= 18.50 && IMC <= 24.99) {
+                    document.getElementById('classificacao').innerHTML = "Peso normal"
+                } 
+                
+                else if (IMC >= 25 && IMC <= 29.99) {
+                    document.getElementById('classificacao').innerHTML = "Sobrepeso"
+                } 
+                
+                else if (IMC >= 30 && IMC <= 34.99) {
+                    document.getElementById('classificacao').innerHTML = "Obesidade grau I"
+                } 
+                
+                else if (IMC >= 35 && IMC <= 39.99) {
+                    document.getElementById('classificacao').innerHTML = "Obesidade grau II"
+                } 
+                
+                else {
+                    document.getElementById('classificacao').innerHTML = "Obesidade grau III"
+                } 
+                
+                return document.getElementById('resultado').innerHTML = IMC.toFixed(2)
+            }
+            
+        </script>
+
+        <br><br>
+        <h3> Índice de Massa Corporal </h3>
+        <label for="altura">Altura:</label>
+        <input type="number" id="altura" name="Altura" placeholder="Insira altura em metros: "> m
+        <br><br>
+        <label for="peso">Peso:</label>
+        <input type="number" id="peso" name="Peso" placeholder="Insira peso em kg: "> kg
+        <br><br>
+        <input id="calcular" type="button" value="Calcular" onclick="Calcular_IMC()" />
+        <br><br>
+        <b>Resultado:</b>
+        <br>
+        <span id ='nome'></span> possui índice de massa corporal igual a <span id="resultado"></span> kg/m², estando classificado como: <span id='classificacao'></span>
+
+    </body>
+</html>
